@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use  Carbon\Carbon;
 use App\Models\Pets;
+use Illuminate\Support\Facades\File;
 
 class PetsController extends Controller
 {
@@ -38,6 +39,9 @@ class PetsController extends Controller
     {
         //
         $path = public_path() . '/images/pets/';
+        if(!File::isDirectory($path)) {
+            File::makeDirectory($path);
+        }
         $image = $request->file('nameImage');
         $nameFile = $this->uploadFile($path,$image);
         $request->merge([
@@ -46,7 +50,9 @@ class PetsController extends Controller
         Pets::updateOrCreate([
             'id'=>$request->id,
         ],$request->all());
-        return redirect("/dashboard");
+        return redirect("/dashboard");   
+        
+      
     }
 
     public function getNumberOfActually(){
