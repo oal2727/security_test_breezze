@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         {{-- test --}}
         <title inertia>{{ config('app.name', 'Laravel') }}</title>
-        <link href="{{ mix('/css/app.css') }}" rel="stylesheet" />
-        <script src="{{ mix('/js/app.js') }}" defer></script>
+        <link href="{{ mix_asset('/css/app.css') }}" rel="stylesheet" />
+        <script src="{{ mix_asset('/js/app.js') }}" defer></script>
         @routes
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
         @inertiaHead
